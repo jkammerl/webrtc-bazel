@@ -1,0 +1,19 @@
+cc_library(
+    name = "rtc",
+    srcs = [
+        "lib/x64/Release/libwebrtc_full.a",
+    ],
+    hdrs = glob(["webrtc/**/*.h"]),
+    defines = [
+        "WEBRTC_POSIX",
+        "WEBRTC_LINUX",
+    ],
+    includes = ["webrtc"],
+    linkopts = [
+        "-ldl",
+        "-lX11",
+        "-pthread",
+    ],
+    visibility = ["//visibility:public"],
+    alwayslink = 1,
+)
